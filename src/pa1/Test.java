@@ -8,12 +8,16 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+
+
 public class Test {
+  private static final String TEST_OUTPUT = "test_output.txt";
+  private static final String MY_OUTPUT = "myanswer.txt";
   public static void main(String args[]) throws IOException {
     System.out.println("Starting tests...");
 
     //Instantiating the File class
-    File file = new File("myanswer.txt");
+    File file = new File(MY_OUTPUT);
     String parentPath = file.getAbsoluteFile().getParent();
 
     //Instantiating the PrintStream class
@@ -28,7 +32,7 @@ public class Test {
     System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
     // Grade the answer
-    File fileAnswer = new File("answer.txt");
+    File fileAnswer = new File(TEST_OUTPUT);
     filesCompareByLine(file.toPath(), fileAnswer.toPath());
     System.out.println("Tests complete.");
   }
