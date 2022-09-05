@@ -11,19 +11,22 @@ import java.nio.file.Path;
 
 
 public class Test {
-  private static final String TEST_OUTPUT = "test_output.txt";
-  private static final String MY_OUTPUT = "myanswer.txt";
+  private static final String TEST_OUTPUT = "expected_output.txt";
+  private static final String MY_OUTPUT = "actual_output.txt";
+  
   public static void main(String args[]) throws IOException {
-    System.out.println("Starting tests...");
+    System.out.println("Output of your program...");
+    HelloWorld.main(null);
+    
+    System.out.println("\nStarting tests...");
 
     //Instantiating the File class
     File file = new File(MY_OUTPUT);
     String parentPath = file.getAbsoluteFile().getParent();
 
     //Instantiating the PrintStream class
-    PrintStream stream = new PrintStream(file);
 //    System.out.println("From now on "+ file.getAbsolutePath()+" will be your console");
-    System.setOut(stream);
+    System.setOut(new PrintStream(file));
 
     //Printing values to file
     HelloWorld.main(null);
@@ -31,7 +34,7 @@ public class Test {
     // Change printstream to stdout
     System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
-    // Grade the answer
+    // Grade the  answer
     File fileAnswer = new File(TEST_OUTPUT);
     filesCompareByLine(file.toPath(), fileAnswer.toPath());
     System.out.println("Tests complete.");
