@@ -10,13 +10,13 @@ import java.nio.file.Path;
 
 
 
-public class Test {
+public class TestNurseryRhyme {
   private static final String TEST_OUTPUT = "expected_output.txt";
   private static final String MY_OUTPUT = "actual_output.txt";
   
   public static void main(String args[]) throws IOException {
     System.out.println("Output of your program...");
-    HelloWorld.main(null);
+    NurseryRhyme.main(null);
     
     System.out.println("\nStarting tests...");
 
@@ -29,7 +29,7 @@ public class Test {
     System.setOut(new PrintStream(file));
 
     //Printing values to file
-    HelloWorld.main(null);
+    NurseryRhyme.main(null);
 
     // Change printstream to stdout
     System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
